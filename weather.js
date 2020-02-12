@@ -1,12 +1,7 @@
 var apiKey = "fe951b8646526da66ff9e2daee1a81e6";
-//$(document).ready(fucntion(){
-    //$("#searchIt").click(function(){
-   //     return getWeather
-   // });
-//});
 $("#searchIt").on("click", function() {
     var Input = $("#mySearch").val();
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + Input + "&APPID=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + Input + "&APPID=" + apiKey + "&units=imperial";
     var queryURL5 = "https://api.openweathermap.org/data/2.5/forecast?q=" + Input + "&APPID=" + apiKey;
     var headVal = $("#city");
     var tempVal = $(".temp");
@@ -22,6 +17,7 @@ $("#searchIt").on("click", function() {
         console.log(response);
         var lat = response.coord.lat;
         var lon = response.coord.lon;
+        //var img = "http://openweathermap.org/img/w/" + response.weather.icon +".png";
         headVal.text(response.name + " " + (currentDay));
         tempVal.text("Temperature: " + response.main.temp);
         humVal.text("Humidity: " + response.main.humidity);
